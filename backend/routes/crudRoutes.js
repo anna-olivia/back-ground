@@ -19,7 +19,7 @@ router.post("/minis", async (request, response, next) => {
 
   try {
   
-    const res = await db.collection('minsis').insertOne(mini)
+    const res = await db.collection('minis').insertOne(mini)
     console.log({ res });
     response.send(`Erfolgreich hinzugefügt mit id ${res.insertedId}`);
   } catch (err) {
@@ -59,7 +59,7 @@ router.get("/minis/:id", async (request, response, next) => {
 
 // >>>> crUd = Update => updateOne/update
 
-router.put("/updateHardcodedCustomer", async (request, response, next) => {
+router.put("/updateHardcodedMini", async (request, response, next) => {
   const db = getDb();
   const miniId = ObjectId('673c889cf4c720a39d7860b9');
  
@@ -69,7 +69,7 @@ router.put("/updateHardcodedCustomer", async (request, response, next) => {
     // 1. Parameter: filter (welche bzw. welches document)
     // 2. Parameter: Änderungsobject (was soll geändert werden)
     const res = await db.collection('minis').updateOne(
-      { _id: customerId },
+      { _id: miniId },
       { 
         $set: { // mit $set können Felder hinzugefügt oder bearbeitet werden
           title: "Mini-App-Fallback",
